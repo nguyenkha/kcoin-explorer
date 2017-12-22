@@ -18,4 +18,7 @@ RUN yarn run build
 
 FROM nginx:alpine
 
-COPY --from=builder /usr/src/app/dist /usr/share/nginx/html
+# Copy built app
+COPY --from=builder /usr/src/app/dist /usr/share/nginx/html/dist
+# Copy index.html
+COPY index.html /usr/share/nginx/html/
