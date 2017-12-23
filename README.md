@@ -9,5 +9,5 @@
 3. Run the dev server
 
 ```
-API_URL=https://api.kcoin.club yarn run dev
+$ API_URL=https://api.kcoin.club yarn run dev
 ```
