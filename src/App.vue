@@ -4,18 +4,29 @@
       <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
       <b-navbar-brand href="#">KCoin Explorer</b-navbar-brand>
     </b-navbar>
-    <b-table responsive :items="blocks"></b-table>
+    <b-container>
+      <h3>Latest blocks</h3>
+      <b-table striped responsive :items="blocks" :fields="fields"></b-table>
+    </b-container>
   </div>
 </template>
 
 <script>
 import http from './http'
+import moment from 'moment'
 
 export default {
   name: 'app',
   data () {
     return {
-      blocks: []
+      blocks: [],
+      fields: [
+        { key: 'hash', label: 'Block hash' },
+        { key: 'transactions', label: 'Transactions', formatter: trxns => trxns.length },
+        { key: 'timestamp', label: 'Age', formatter: ts => moment.unix(ts).fromNow(true) },
+        'difficulty',
+        'nonce'
+      ]
     }
   },
   created() {
