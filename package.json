@@ -15,7 +15,8 @@
     "lodash": "^4.17.4",
     "moment": "^2.20.1",
     "popper.js": "^1.12.9",
-    "vue": "^2.5.3"
+    "vue": "^2.5.3",
+    "vue-router": "^3.0.1"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
