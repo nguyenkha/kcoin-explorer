@@ -2,6 +2,7 @@ import Vue from 'vue'
 import BootstrapVue from "bootstrap-vue"
 import App from './App.vue'
 import LatestBlocks from './LatestBlocks.vue'
+import Block from './Block.vue'
 import VueRouter from 'vue-router'
 import "bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap-vue/dist/bootstrap-vue.css"
@@ -16,6 +17,11 @@ const routes = [
     path: '/',
     name: 'latest-blocks',
     component: LatestBlocks
+  },
+  {
+    path: '/blocks/:id',
+    name: 'block',
+    component: Block
   }
 ]
 

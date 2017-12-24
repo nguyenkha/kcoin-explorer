@@ -17,12 +17,12 @@ export default {
       blocks: [],
       fields: [
         'height',
-        { key: 'hash', label: 'Block Hash', formatter: hash => hash.slice(0, 16) + '...'},
+        { key: 'hash', label: 'Block Hash', formatter: hash => '<a href="#/blocks/' + hash + '">' + hash.slice(0, 16) + '...' + '</a>'},
         { key: 'transactions', label: 'Transactions', formatter: transactions => transactions.length },
         { key: 'timestamp', label: 'Age', formatter: ts => moment.unix(ts).fromNow(true) },
         'difficulty',
         'nonce',
-        { key: 'totalSent', label: 'Total Sent' }
+        { key: 'totalOutput', label: 'Total Output' }
       ]
     }
   },
@@ -32,7 +32,7 @@ export default {
       // Calculate height, output total
       this.blocks = response.data.map((b, i) => {
         b.height = count - i - 1
-        b.totalSent = _.sum(b.transactions.map(transaction => {
+        b.totalOutput = _.sum(b.transactions.map(transaction => {
           return _.sumBy(transaction.outputs, 'value')
         }))
         return b
